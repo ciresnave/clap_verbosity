@@ -1,14 +1,18 @@
 //! Control `log` level with a `--verbose` flag for your CLI
 //!
+//! This crate adds a `--verbose` flag to your CLI.  Most of its code
+//! came from [`clap_verbosity_flag`](https://crates.io/crates/clap_verbosity_flag) and
+//! as such, it is largely a superset and a drop-in replacement of that crate.
+//! 
 //! # Examples
 //!
 //! To get `--quiet` and `--verbose` flags through your entire program, just `flatten`
 //! [`Verbosity`]:
 //! ```rust,no_run
 //! # use clap::Parser;
-//! # use clap_verbosity_flag::Verbosity;
+//! # use clap_verbosity::Verbosity;
 //! #
-//! # /// Le CLI
+//! # /// The CLI
 //! # #[derive(Debug, Parser)]
 //! # struct Cli {
 //! #[command(flatten)]
@@ -19,9 +23,9 @@
 //! You can then use this to configure your logger:
 //! ```rust,no_run
 //! # use clap::Parser;
-//! # use clap_verbosity_flag::Verbosity;
+//! # use clap_verbosity::Verbosity;
 //! #
-//! # /// Le CLI
+//! # /// The CLI
 //! # #[derive(Debug, Parser)]
 //! # struct Cli {
 //! #     #[command(flatten)]
@@ -43,9 +47,9 @@
 //! You can also customize the default logging level:
 //! ```rust,no_run
 //! # use clap::Parser;
-//! use clap_verbosity_flag::{Verbosity, InfoLevel};
+//! use clap_verbosity::{Verbosity, InfoLevel};
 //!
-//! /// Le CLI
+//! /// The CLI
 //! #[derive(Debug, Parser)]
 //! struct Cli {
 //!     #[command(flatten)]
@@ -56,6 +60,9 @@
 //! Or implement [`LogLevel`] yourself for more control.
 
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
+
+#![cfg(feature = "serde")]
+pub mod serde_support;
 
 pub use log::Level;
 pub use log::LevelFilter;
@@ -121,7 +128,8 @@ impl<L: LogLevel> Verbosity<L> {
     }
 }
 
-fn level_value(level: Option<log::Level>) -> i8 {
+/// Converts an Option<log::Level> to an i8.
+pub fn level_value(level: Option<log::Level>) -> i8 {
     match level {
         None => -1,
         Some(log::Level::Error) => 0,
@@ -132,7 +140,8 @@ fn level_value(level: Option<log::Level>) -> i8 {
     }
 }
 
-fn level_enum(verbosity: i8) -> Option<log::Level> {
+/// Converts an i8 to an Option<log::Level>.
+pub fn level_enum(verbosity: i8) -> Option<log::Level> {
     match verbosity {
         std::i8::MIN..=-1 => None,
         0 => Some(log::Level::Error),

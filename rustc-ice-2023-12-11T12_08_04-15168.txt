@@ -1,0 +1,64 @@
+thread 'copy LTO artifacts for 2ao2yg9myprc7oky' panicked at /rustc/06e02d5b259c1e88cbf0c74366d9e0a4c7cfd6d9\compiler\rustc_codegen_ssa\src\back\write.rs:879:5:
+assertion failed: module_config.emit_obj != EmitObj::None
+stack backtrace:
+   0:     0x7ffb83a8ddff - std::backtrace::Backtrace::force_capture::h0f608d108d5d11cf
+   1:     0x7ffb83a8dd64 - std::backtrace::Backtrace::force_capture::h0f608d108d5d11cf
+   2:     0x7ffb2eb7f9c9 - <tracing_subscriber[a60de01ee24f8a17]::fmt::format::Writer>::write_fmt
+   3:     0x7ffb83aa6ea3 - std::panicking::rust_panic_with_hook::he0a18795469996ff
+   4:     0x7ffb83aa6d0b - <std::panicking::begin_panic_handler::StaticStrPayload as core::panic::PanicPayload>::take_box::ha9a45484d3089dd3
+   5:     0x7ffb83aa3ee9 - <std::sys_common::backtrace::_print::DisplayBacktrace as core::fmt::Display>::fmt::h3ddcb0a3973d1efe
+   6:     0x7ffb83aa6a54 - rust_begin_unwind
+   7:     0x7ffb83afb657 - core::panicking::panic_fmt::h2e88cabc68833e94
+   8:     0x7ffb83afb732 - core::panicking::panic::h55ad7283c4a103dd
+   9:     0x7ffb2aca70d2 - <rustc_codegen_llvm[c2459030e8a5c7d8]::context::CodegenCx as rustc_codegen_ssa[8ca2081af968421b]::traits::type_::LayoutTypeMethods>::fn_ptr_backend_type
+  10:     0x7ffb2ac81472 - <rustc_codegen_llvm[c2459030e8a5c7d8]::llvm_::ffi::Type>::ptr_llcx
+  11:     0x7ffb83ab8f4c - std::sys::windows::thread::Thread::new::hf47c67c21d961fab
+  12:     0x7ffbc4b81f67 - BaseThreadInitThunk
+  13:     0x7ffbc6a43570 - RtlUserThreadStart
+
+
+rustc version: 1.76.0-nightly (06e02d5b2 2023-12-09)
+platform: x86_64-pc-windows-msvcthread 'coordinator' panicked at compiler\rustc_middle\src\util\bug.rs:36:26:
+/rustc/06e02d5b259c1e88cbf0c74366d9e0a4c7cfd6d9\compiler\rustc_codegen_ssa\src\back\write.rs:1576:29: worker thread panicked
+stack backtrace:
+   0:     0x7ffb83a8ddff - std::backtrace::Backtrace::force_capture::h0f608d108d5d11cf
+   1:     0x7ffb83a8dd64 - std::backtrace::Backtrace::force_capture::h0f608d108d5d11cf
+   2:     0x7ffb2eb7f9c9 - <tracing_subscriber[a60de01ee24f8a17]::fmt::format::Writer>::write_fmt
+   3:     0x7ffb83aa6ea3 - std::panicking::rust_panic_with_hook::he0a18795469996ff
+   4:     0x7ffb2ff41c64 - <rustc_middle[fa512fc6edcf2bf4]::ty::typeck_results::UserTypeAnnotationIndex as core[c3216a7ffeb8fb5b]::fmt::Debug>::fmt
+   5:     0x7ffb2ff3ef19 - <rustc_middle[fa512fc6edcf2bf4]::ty::typeck_results::UserTypeAnnotationIndex as core[c3216a7ffeb8fb5b]::fmt::Debug>::fmt
+   6:     0x7ffb2ff8f563 - <rustc_middle[fa512fc6edcf2bf4]::mir::interpret::allocation::ConstAllocation as rustc_middle[fa512fc6edcf2bf4]::ty::context::Lift>::lift_to_tcx
+   7:     0x7ffb2ff6b1fe - rustc_middle[fa512fc6edcf2bf4]::util::bug::bug_fmt
+   8:     0x7ffb2ff6830d - <rustc_middle[fa512fc6edcf2bf4]::ty::assoc::AssocItems>::find_by_name_and_kinds
+   9:     0x7ffb2ff682cf - <rustc_middle[fa512fc6edcf2bf4]::ty::assoc::AssocItems>::find_by_name_and_kinds
+  10:     0x7ffb2ff6b122 - rustc_middle[fa512fc6edcf2bf4]::util::bug::bug_fmt
+  11:     0x7ffb2aca994c - <rustc_codegen_llvm[c2459030e8a5c7d8]::context::CodegenCx as rustc_codegen_ssa[8ca2081af968421b]::traits::type_::LayoutTypeMethods>::fn_ptr_backend_type
+  12:     0x7ffb2ac81940 - <rustc_codegen_llvm[c2459030e8a5c7d8]::llvm_::ffi::Type>::ptr_llcx
+  13:     0x7ffb83ab8f4c - std::sys::windows::thread::Thread::new::hf47c67c21d961fab
+  14:     0x7ffbc4b81f67 - BaseThreadInitThunk
+  15:     0x7ffbc6a43570 - RtlUserThreadStart
+thread 'rustc' panicked at compiler\rustc_middle\src\util\bug.rs:36:26:
+/rustc/06e02d5b259c1e88cbf0c74366d9e0a4c7cfd6d9\compiler\rustc_codegen_ssa\src\back\write.rs:1950:17: panic during codegen/LLVM phase
+stack backtrace:
+   0:     0x7ffb83a8ddff - std::backtrace::Backtrace::force_capture::h0f608d108d5d11cf
+   1:     0x7ffb83a8dd64 - std::backtrace::Backtrace::force_capture::h0f608d108d5d11cf
+   2:     0x7ffb2eb7f9c9 - <tracing_subscriber[a60de01ee24f8a17]::fmt::format::Writer>::write_fmt
+   3:     0x7ffb83aa6ea3 - std::panicking::rust_panic_with_hook::he0a18795469996ff
+   4:     0x7ffb2ff41c64 - <rustc_middle[fa512fc6edcf2bf4]::ty::typeck_results::UserTypeAnnotationIndex as core[c3216a7ffeb8fb5b]::fmt::Debug>::fmt
+   5:     0x7ffb2ff3ef19 - <rustc_middle[fa512fc6edcf2bf4]::ty::typeck_results::UserTypeAnnotationIndex as core[c3216a7ffeb8fb5b]::fmt::Debug>::fmt
+   6:     0x7ffb2ff8f563 - <rustc_middle[fa512fc6edcf2bf4]::mir::interpret::allocation::ConstAllocation as rustc_middle[fa512fc6edcf2bf4]::ty::context::Lift>::lift_to_tcx
+   7:     0x7ffb2ff6b1fe - rustc_middle[fa512fc6edcf2bf4]::util::bug::bug_fmt
+   8:     0x7ffb2ff6830d - <rustc_middle[fa512fc6edcf2bf4]::ty::assoc::AssocItems>::find_by_name_and_kinds
+   9:     0x7ffb2ff682cf - <rustc_middle[fa512fc6edcf2bf4]::ty::assoc::AssocItems>::find_by_name_and_kinds
+  10:     0x7ffb2ff6b122 - rustc_middle[fa512fc6edcf2bf4]::util::bug::bug_fmt
+  11:     0x7ffb2ac80099 - <rustc_codegen_llvm[c2459030e8a5c7d8]::llvm_::ffi::Type>::ptr_llcx
+  12:     0x7ffb2acb872c - <rustc_codegen_llvm[c2459030e8a5c7d8]::context::CodegenCx as rustc_codegen_ssa[8ca2081af968421b]::traits::type_::LayoutTypeMethods>::fn_ptr_backend_type
+  13:     0x7ffb2ac6cfe6 - <rustc_codegen_llvm[c2459030e8a5c7d8]::LlvmCodegenBackend as rustc_codegen_ssa[8ca2081af968421b]::traits::backend::CodegenBackend>::join_codegen
+  14:     0x7ffb2ac0076b - <rustc_interface[5ed510a22b930b56]::queries::Linker>::link
+  15:     0x7ffb2abe0822 - <rustc_middle[fa512fc6edcf2bf4]::ty::SymbolName as core[c3216a7ffeb8fb5b]::fmt::Display>::fmt
+  16:     0x7ffb2aba2f34 - <rustc_middle[fa512fc6edcf2bf4]::ty::SymbolName as core[c3216a7ffeb8fb5b]::fmt::Display>::fmt
+  17:     0x7ffb2abe6a19 - <rustc_middle[fa512fc6edcf2bf4]::ty::SymbolName as core[c3216a7ffeb8fb5b]::fmt::Display>::fmt
+  18:     0x7ffb2ab9a318 - rustc_driver_impl[9df0406a03c45581]::main
+  19:     0x7ffb83ab8f4c - std::sys::windows::thread::Thread::new::hf47c67c21d961fab
+  20:     0x7ffbc4b81f67 - BaseThreadInitThunk
+  21:     0x7ffbc6a43570 - RtlUserThreadStart

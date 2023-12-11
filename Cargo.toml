@@ -1,55 +1,29 @@
-[workspace]
-resolver = "2"
-
-[workspace.package]
-license = "MIT OR Apache-2.0"
-edition = "2021"
-rust-version = "1.70"  # MSRV
-include = [
-  "build.rs",
-  "src/**/*",
-  "Cargo.toml",
-  "Cargo.lock",
-  "LICENSE*",
-  "README.md",
-  "benches/**/*",
-  "examples/**/*"
-]
-
 [package]
-name = "clap-verbosity-flag"
+name = "clap-verbosity"
 version = "2.1.0"
 description = "Easily add a `--verbose` flag to CLIs using Clap"
 authors = ["Pascal Hertleif <killercup@gmail.com>"]
 repository = "https://github.com/clap-rs/clap-verbosity-flag"
 readme = "README.md"
-license.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-include.workspace = true
-
-[package.metadata.docs.rs]
-all-features = true
-rustdoc-args = ["--cfg", "docsrs"]
-
-[package.metadata.release]
-pre-release-replacements = [
-  {file="CHANGELOG.md", search="Unreleased", replace="{{version}}", min=1},
-  {file="CHANGELOG.md", search="\\.\\.\\.HEAD", replace="...{{tag_name}}", exactly=1},
-  {file="CHANGELOG.md", search="ReleaseDate", replace="{{date}}", min=1},
-  {file="CHANGELOG.md", search="<!-- next-header -->", replace="<!-- next-header -->\n## [Unreleased] - ReleaseDate\n", exactly=1},
-  {file="CHANGELOG.md", search="<!-- next-url -->", replace="<!-- next-url -->\n[Unreleased]: https://github.com/clap-rs/clap-verbosity-flag/compare/{{tag_name}}...HEAD", exactly=1},
-]
+license = "MIT OR Apache-2.0"
+edition = "2021"
+rust-version = "1.70.0" #MSRV
 
 [badges]
-codecov = { repository = "clap-rs/clap-verbosity-flag" }
+codecov = { repository = "ciresnave/clap-verbosity" }
 
 [dependencies]
-log = "0.4.1"
-clap = { version = "4.0.0", default-features = false, features = ["std", "derive"] }
+log = "0.4.20"
+clap = { version = "4.4.11", default-features = false, features = ["std", "derive"] }
+serde = { version = "1.0.193", optional = true }
 
 [dev-dependencies]
 env_logger = "0.10.1"
-tracing = "0.1"
-tracing-subscriber = "0.3"
-tracing-log = "0.2"
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
+tracing-log = "0.2.0"
+
+[features]
+default = ["serde"]
+# Feature 'serde' adds support for serde serialization/deserialization
+serde = ["dep:serde"]
