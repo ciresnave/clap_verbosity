@@ -1,11 +1,11 @@
 # clap-verbosity
 
 [![Documentation](https://img.shields.io/badge/docs-master-blue.svg)][Documentation]
-![License](https://img.shields.io/crates/l/clap-verbosity-flag.svg)
-[![crates.io](https://img.shields.io/crates/v/clap-verbosity-flag.svg)][Crates.io]
+![Crates.io](https://img.shields.io/crates/l/clap-verbosity)
+[![crates.io](https://img.shields.io/crates/v/clap-verbosity.svg)][Crates.io]
 
-[Crates.io]: https://crates.io/crates/clap-verbosity-flag
-[Documentation]: https://docs.rs/clap-verbosity-flag/
+[Crates.io]: https://crates.io/crates/clap-verbosity
+[Documentation]: https://docs.rs/clap-verbosity/
 
 Easily add a `--verbose` flag to CLIs using Clap
 
@@ -18,11 +18,12 @@ use clap::Parser;
 #[derive(Debug, Parser)]
 struct Cli {
     #[command(flatten)]
-    verbose: clap_verbosity_flag::Verbosity,
+    verbose: clap_verbosity::Verbosity,
 }
 ```
 
 By default, it'll only report errors.
+
 - `-q` silences output
 - `-v` show warnings
 - `-vv` show info
